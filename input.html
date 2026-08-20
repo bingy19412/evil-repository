@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Neon Rift // 1v1 Arena</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main class="game-shell">
+		<header class="topbar">
+			<div class="brand-lockup">
+				<span class="brand-mark">✦</span>
+				<div><p class="eyebrow">ARC LIGHT STUDIOS</p><h1>NEON <span>RIFT</span></h1></div>
+			</div>
+			<div class="match-status"><span class="live-dot"></span><span id="matchLabel">LIVE MATCH</span><b id="roundLabel">ROUND 01</b></div>
+			<button class="reset-button" id="resetButton" type="button">↻ <span>RESET ROUND</span></button>
+		</header>
+
+		<section class="scoreboard" aria-label="match scoreboard">
+			<div class="player-card player-one"><div class="player-name"><i></i><span>PLAYER ONE</span><small>WASD</small></div><div class="score" id="scoreOne">0</div></div>
+			<div class="versus"><span>BEST OF</span><strong>∞</strong><span>FIRST TO 5</span></div>
+			<div class="player-card player-two"><div class="player-name"><i></i><span>PLAYER TWO</span><small>ARROWS</small></div><div class="score" id="scoreTwo">0</div></div>
+		</section>
+
+		<section class="arena-frame">
+			<div class="arena-meta"><span><b class="signal"></b> ARENA // LOW GRAVITY</span><span id="arenaMessage">COLLECT ENERGY. OUTPLAY YOUR RIVAL.</span><span id="timer">01:30</span></div>
+			<canvas id="arena" aria-label="Neon Rift game arena"></canvas>
+			<div class="round-over hidden" id="roundOver"><p class="eyebrow">ROUND COMPLETE</p><h2 id="winnerText">PLAYER ONE WINS</h2><p id="winnerSubtext">Clean hit. Beautiful work.</p><button class="play-button" id="playButton" type="button">PLAY NEXT ROUND <span>→</span></button></div>
+			<div class="toast" id="toast">FIRST TO 5 WINS THE RIFT</div>
+		</section>
+
+		<footer class="controls-bar">
+			<div class="control-group"><span class="control-icon coral">P1</span><div><b>MOVE</b><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span></div><em>SPACE TO DASH</em></div>
+			<div class="control-group"><span class="control-icon cyan">P2</span><div><b>MOVE</b><span><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></span></div><em>ENTER TO DASH</em></div>
+			<div class="tip"><span>✧</span><div><b>RIFT TIP</b><p>Energy cores supercharge your next bolt.</p></div></div>
+		</footer>
+	</main>
+	<script src="script.js"></script>
+</body>
+</html>
