@@ -18,7 +18,7 @@
 		</div>
 		<div class="online-panel hidden" id="onlinePanel">
 			<div><p class="eyebrow">LAN LOBBY</p><h2>CONNECT THE RIFT</h2><p>Start the relay server on one computer, then share its LAN address with the other player.</p></div>
-			<div class="lobby-controls"><label>LOBBY CODE<input id="lobbyCode" maxlength="6" placeholder="------" inputmode="text"></label><label>MODE<select id="onlineMode"><option value="ONLINE 1V1">ONLINE 1V1</option><option disabled>ONLINE 2V2 // COMING SOON</option><option disabled>FREE-FOR-ALL // COMING SOON</option></select></label><button class="menu-button compact" id="hostButton" type="button">HOST LOBBY</button><button class="menu-button compact" id="joinButton" type="button">JOIN LOBBY</button></div>
+			<div class="lobby-controls"><label>LOBBY CODE<input id="lobbyCode" maxlength="6" placeholder="------" inputmode="text"></label><label>MODE<select id="onlineMode"><option value="ONLINE 1V1">ONLINE 1V1</option><option value="ONLINE 2V2">ONLINE 2V2</option><option value="FREE-FOR-ALL">FREE-FOR-ALL</option></select></label><button class="menu-button compact" id="hostButton" type="button">HOST LOBBY</button><button class="menu-button compact" id="joinButton" type="button">JOIN LOBBY</button></div>
 			<p class="lobby-status" id="lobbyStatus">RELAY NOT STARTED // LOCAL PLAY IS READY</p>
 		</div>
 		<p class="menu-foot">SOUND EFFECTS ARE GENERATED IN YOUR BROWSER. USE HEADPHONES.</p>
@@ -51,6 +51,7 @@
 		<footer class="controls-bar">
 			<div class="control-group"><span class="control-icon coral">P1</span><div><b>MOVE</b><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span></div><em>SPACE TO DASH</em></div>
 			<div class="control-group"><span class="control-icon cyan">P2</span><div><b>MOVE</b><span><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></span></div><em>ENTER TO DASH</em></div>
+			<div class="control-group online-extra"><span class="control-icon pink">P3/4</span><div><b>ONLINE</b><span><kbd>IJKL</kbd><kbd>TFGH</kbd></span></div><em>O / Y TO DASH</em></div>
 			<div class="tip"><span>✧</span><div><b>CHARGED BOLT</b><p>Touch a gold core, then move to aim and fire your next powered shot.</p></div></div>
 		</footer>
 	</main>

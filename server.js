@@ -33,6 +33,8 @@ function removeFromLobby(socket) {
 	socket.lobbyCode = null;
 }
 
+function lobbyCapacity(mode) { return mode === 'ONLINE 1V1' ? 2 : 4; }
+
 function handleMessage(socket, raw) {
 	let message;
 	try { message = JSON.parse(raw); } catch { return send(socket, { type: 'error', message: 'Invalid JSON message.' }); }
@@ -40,9 +42,11 @@ function handleMessage(socket, raw) {
 	if (message.type === 'host') {
 		removeFromLobby(socket);
 		const code = createCode();
-		lobbies.set(code, { code, mode: String(message.mode || 'ONLINE 1V1'), players: [socket] });
+		const mode = String(message.mode || 'ONLINE 1V1');
+		lobbies.set(code, { code, mode, players: [socket] });
 		socket.lobbyCode = code;
-		return send(socket, { type: 'hosted', code, mode: message.mode, players: 1 });
+		socket.slot = 0;
+		return send(socket, { type: 'hosted', code, mode, slot: socket.slot, players: 1, capacity: lobbyCapacity(mode) });
 	}
 
 	if (message.type === 'join') {
@@ -50,11 +54,11 @@ function handleMessage(socket, raw) {
 		const code = String(message.code || '').trim().toUpperCase();
 		const lobby = lobbies.get(code);
 		if (!lobby) return send(socket, { type: 'error', message: 'Lobby not found.' });
-		if (lobby.players.length >= 4) return send(socket, { type: 'error', message: 'Lobby is full.' });
-		lobby.players.push(socket); socket.lobbyCode = code;
-		send(socket, { type: 'joined', code, mode: lobby.mode, players: lobby.players.length });
+		if (lobby.players.length >= lobbyCapacity(lobby.mode)) return send(socket, { type: 'error', message: 'Lobby is full.' });
+		lobby.players.push(socket); socket.lobbyCode = code; socket.slot = lobby.players.length - 1;
+		send(socket, { type: 'joined', code, mode: lobby.mode, slot: socket.slot, players: lobby.players.length, capacity: lobbyCapacity(lobby.mode) });
 		broadcast(lobby, { type: 'player-joined', players: lobby.players.length }, socket);
-		if (lobby.players.length === 2) return broadcast(lobby, { type: 'match-ready', mode: lobby.mode, players: lobby.players.length });
+		if (lobby.players.length === lobbyCapacity(lobby.mode)) return broadcast(lobby, { type: 'match-ready', mode: lobby.mode, players: lobby.players.length });
 		return;
 	}
 
