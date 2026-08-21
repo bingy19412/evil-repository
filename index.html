@@ -10,8 +10,22 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<main class="game-shell">
+	<section class="main-menu" id="mainMenu">
+		<div class="menu-brand"><span class="brand-mark">✦</span><p class="eyebrow">ARC LIGHT STUDIOS</p><h1>NEON <span>RIFT</span></h1><p class="menu-kicker">A LOCAL ARENA FOR BRIGHT IDEAS AND BAD DECISIONS.</p></div>
+		<div class="menu-actions">
+			<button class="menu-button primary" id="localButton" type="button"><strong>LOCAL 1V1</strong><span>Two pilots. One keyboard. No excuses.</span></button>
+			<button class="menu-button" id="onlineButton" type="button"><strong>ONLINE MULTIPLAYER</strong><span>LAN lobbies for 1v1, 2v2, and free-for-all.</span></button>
+		</div>
+		<div class="online-panel hidden" id="onlinePanel">
+			<div><p class="eyebrow">LAN LOBBY</p><h2>CONNECT THE RIFT</h2><p>Online play needs the small LAN relay server included with the project. Start it on a computer on your Wi-Fi, then share its address with the other players.</p></div>
+			<div class="lobby-controls"><label>LOBBY CODE<input id="lobbyCode" maxlength="6" placeholder="------" inputmode="text"></label><label>MODE<select id="onlineMode"><option>ONLINE 1V1</option><option>ONLINE 2V2</option><option>FREE-FOR-ALL</option></select></label><button class="menu-button compact" id="hostButton" type="button">HOST LOBBY</button><button class="menu-button compact" id="joinButton" type="button">JOIN LOBBY</button></div>
+			<p class="lobby-status" id="lobbyStatus">RELAY NOT STARTED // LOCAL PLAY IS READY</p>
+		</div>
+		<p class="menu-foot">SOUND EFFECTS ARE GENERATED IN YOUR BROWSER. USE HEADPHONES.</p>
+	</section>
+	<main class="game-shell hidden" id="gameShell">
 		<header class="topbar">
+			<button class="back-button" id="backButton" type="button">← MENU</button>
 			<div class="brand-lockup">
 				<span class="brand-mark">✦</span>
 				<div><p class="eyebrow">ARC LIGHT STUDIOS</p><h1>NEON <span>RIFT</span></h1></div>
