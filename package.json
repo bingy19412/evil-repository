@@ -1,0 +1,13 @@
+{
+  "name": "neon-rift",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Neon Rift browser arena and LAN WebSocket relay",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.21.3"
+  }
+}
